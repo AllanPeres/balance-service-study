@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
-
+    // TODO: check how to return value in a nicer way, maybe response with message
     private final UserService service;
 
     @GetMapping
@@ -30,7 +30,13 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<UserModel> getUser(
             @PathVariable String id) {
-        return service.findById(id).map(ResponseEntity:: ok).orElse(ResponseEntity.notFound().build());
+        return service.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<UserModel> deleteUser(@PathVariable String id) {
+        service.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
