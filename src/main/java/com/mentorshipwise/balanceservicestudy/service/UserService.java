@@ -1,6 +1,6 @@
 package com.mentorshipwise.balanceservicestudy.service;
 
-import com.mentorshipwise.balanceservicestudy.model.UserModel;
+import com.mentorshipwise.balanceservicestudy.model.User;
 import com.mentorshipwise.balanceservicestudy.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,20 +17,20 @@ public class UserService {
     private final UserRepository repository;
     private final PasswordEncoder passwordEncoder;
 
-    public List<UserModel> findAll() {
+    public List<User> findAll() {
         return repository.findAll();
     }
 
-    public UserModel create(UserModel user) {
+    public User create(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return repository.save(user);
     }
 
-    public Optional<UserModel> findById(String id) {
+    public Optional<User> findById(String id) {
         return repository.findById(id);
     }
 
-    public Optional<UserModel> findByEmail(String email) {
+    public Optional<User> findByEmail(String email) {
         return repository.findByEmail(email);
     }
 

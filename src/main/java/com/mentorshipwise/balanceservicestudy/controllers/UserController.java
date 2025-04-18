@@ -1,6 +1,6 @@
 package com.mentorshipwise.balanceservicestudy.controllers;
 
-import com.mentorshipwise.balanceservicestudy.model.UserModel;
+import com.mentorshipwise.balanceservicestudy.model.User;
 import com.mentorshipwise.balanceservicestudy.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,28 +13,30 @@ import java.util.List;
 @RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
+    // TODO: edit user
     // TODO: check how to return value in a nicer way, maybe response with message
+    // TODO: check for form validation
     private final UserService service;
 
     @GetMapping
-    public List<UserModel> getAllUsers() {
+    public List<User> getAllUsers() {
         return service.findAll();
     }
 
     @PostMapping
-    public ResponseEntity<UserModel> createUser(
-            @RequestBody UserModel user) {
+    public ResponseEntity<User> createUser(
+            @RequestBody User user) {
         return new ResponseEntity<>(service.create(user), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserModel> getUser(
+    public ResponseEntity<User> getUser(
             @PathVariable String id) {
         return service.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<UserModel> deleteUser(@PathVariable String id) {
+    public ResponseEntity<User> deleteUser(@PathVariable String id) {
         service.deleteById(id);
         return ResponseEntity.noContent().build();
     }
