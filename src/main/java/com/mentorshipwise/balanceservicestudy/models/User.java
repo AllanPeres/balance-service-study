@@ -1,4 +1,4 @@
-package com.mentorshipwise.balanceservicestudy.model;
+package com.mentorshipwise.balanceservicestudy.models;
 
 
 import lombok.AllArgsConstructor;
@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 public class User {
     @Id
     private String id;
-    
+
     private String name;
 
     @Indexed(unique = true)

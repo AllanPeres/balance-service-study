@@ -1,6 +1,6 @@
 package com.mentorshipwise.balanceservicestudy.repository;
 
-import com.mentorshipwise.balanceservicestudy.model.User;
+import com.mentorshipwise.balanceservicestudy.models.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
