@@ -1,4 +1,4 @@
-package com.mentorshipwise.balanceservicestudy.dtos;
+package com.mentorshipwise.balanceservicestudy.dtos.request;
 
 import com.mentorshipwise.balanceservicestudy.utils.RegexUtil;
 import jakarta.validation.constraints.Email;

@@ -1,6 +1,6 @@
 package com.mentorshipwise.balanceservicestudy.utils;
 
-import com.mentorshipwise.balanceservicestudy.dtos.ApiResponse;
+import com.mentorshipwise.balanceservicestudy.dtos.response.ApiResponse;
 import com.mentorshipwise.balanceservicestudy.enums.ApiResponseStatus;
 
 public class ResponseUtil {
