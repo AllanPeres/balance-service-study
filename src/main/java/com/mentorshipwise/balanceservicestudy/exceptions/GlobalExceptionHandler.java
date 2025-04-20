@@ -1,6 +1,6 @@
 package com.mentorshipwise.balanceservicestudy.exceptions;
 
-import com.mentorshipwise.balanceservicestudy.dtos.ApiResponse;
+import com.mentorshipwise.balanceservicestudy.dtos.response.ApiResponse;
 import com.mentorshipwise.balanceservicestudy.utils.ResponseUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,10 +11,17 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     // Handle global exception to avoid status 500 when not found
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ApiResponse<Void>> handleUserNotFound(UserNotFoundException ex) {
+    @ExceptionHandler(UserExceptions.UserNotFoundException.class)
+    public ResponseEntity<ApiResponse<Void>> handleUserNotFound(UserExceptions.UserNotFoundException ex) {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
+                .body(ResponseUtil.error(ex.getMessage()));
+    }
+
+    @ExceptionHandler(UserExceptions.InvalidCredentials.class)
+    public ResponseEntity<ApiResponse<Void>> handleInvalidCredentials(UserExceptions.InvalidCredentials ex) {
+        return ResponseEntity
+                .status(HttpStatus.UNAUTHORIZED)
                 .body(ResponseUtil.error(ex.getMessage()));
     }
 
