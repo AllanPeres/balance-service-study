@@ -38,9 +38,13 @@ public class BalanceService {
         return balanceRepository.save(newBalance);
     }
 
+    private Balance getBalanceOrThrow(String userId, String currency) {
+        return balanceRepository.findByCurrencyAndUserId(currency, userId)
+                .orElseThrow(() -> new BalanceExceptions.BalanceNotFoundException(currency));
+    }
+
     public Balance addToBalance(BalanceRequest.Add req) {
-        Balance balance = balanceRepository.findByCurrencyAndUserId(req.getCurrency(), req.getUserId())
-                .orElseThrow(() -> new BalanceExceptions.BalanceNotFoundException(req.getCurrency()));
+        Balance balance = getBalanceOrThrow(req.getUserId(), req.getCurrency());
 
         BigDecimal updatedAmount = balance.getAvailable().add(req.getAmount());
 
@@ -51,8 +55,7 @@ public class BalanceService {
     }
 
     public Balance spendFromBalance(BalanceRequest.Spend req) {
-        Balance balance = balanceRepository.findByCurrencyAndUserId(req.getCurrency(), req.getUserId())
-                .orElseThrow(() -> new BalanceExceptions.BalanceNotFoundException(req.getCurrency()));
+        Balance balance = getBalanceOrThrow(req.getUserId(), req.getCurrency());
 
         BigDecimal minAmount = currencyRulesService.getMinimumAmount(req.getCurrency());
 
