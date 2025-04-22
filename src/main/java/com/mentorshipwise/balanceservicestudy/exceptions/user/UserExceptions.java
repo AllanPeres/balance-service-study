@@ -1,4 +1,4 @@
-package com.mentorshipwise.balanceservicestudy.exceptions;
+package com.mentorshipwise.balanceservicestudy.exceptions.user;
 
 public class UserExceptions {
 

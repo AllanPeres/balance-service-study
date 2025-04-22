@@ -1,8 +1,8 @@
 package com.mentorshipwise.balanceservicestudy.services;
 
-import com.mentorshipwise.balanceservicestudy.dtos.response.AuthResponse;
-import com.mentorshipwise.balanceservicestudy.dtos.response.UserResponse;
-import com.mentorshipwise.balanceservicestudy.exceptions.UserExceptions;
+import com.mentorshipwise.balanceservicestudy.dtos.response.user.AuthResponse;
+import com.mentorshipwise.balanceservicestudy.dtos.response.user.UserResponse;
+import com.mentorshipwise.balanceservicestudy.exceptions.user.UserExceptions;
 import com.mentorshipwise.balanceservicestudy.models.User;
 import com.mentorshipwise.balanceservicestudy.repository.UserRepository;
 import com.mentorshipwise.balanceservicestudy.utils.JwtUtil;

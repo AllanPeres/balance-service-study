@@ -1,8 +1,8 @@
 package com.mentorshipwise.balanceservicestudy.services;
 
-import com.mentorshipwise.balanceservicestudy.dtos.request.UpdateUserRequest;
-import com.mentorshipwise.balanceservicestudy.dtos.request.UserRequest;
-import com.mentorshipwise.balanceservicestudy.exceptions.UserExceptions;
+import com.mentorshipwise.balanceservicestudy.dtos.request.user.UpdateUserRequest;
+import com.mentorshipwise.balanceservicestudy.dtos.request.user.UserRequest;
+import com.mentorshipwise.balanceservicestudy.exceptions.user.UserExceptions;
 import com.mentorshipwise.balanceservicestudy.models.User;
 import com.mentorshipwise.balanceservicestudy.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,7 @@
 package com.mentorshipwise.balanceservicestudy.controllers;
 
-import com.mentorshipwise.balanceservicestudy.dtos.request.UpdateUserRequest;
-import com.mentorshipwise.balanceservicestudy.dtos.request.UserRequest;
+import com.mentorshipwise.balanceservicestudy.dtos.request.user.UpdateUserRequest;
+import com.mentorshipwise.balanceservicestudy.dtos.request.user.UserRequest;
 import com.mentorshipwise.balanceservicestudy.dtos.response.ApiResponse;
 import com.mentorshipwise.balanceservicestudy.models.User;
 import com.mentorshipwise.balanceservicestudy.services.UserService;
