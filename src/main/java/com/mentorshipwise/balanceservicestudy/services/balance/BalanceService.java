@@ -73,4 +73,10 @@ public class BalanceService {
         return balanceRepository.save(balance);
     }
 
+    public Balance sendFromBalanceToBalance(BalanceRequest.Send req) {
+        Balance balance = getBalanceOrThrow(req.getUserId(), req.getCurrency());
+
+
+    }
+
 }

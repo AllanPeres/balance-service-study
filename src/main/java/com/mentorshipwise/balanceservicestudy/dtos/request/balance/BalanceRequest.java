@@ -32,5 +32,7 @@ public class BalanceRequest {
         private String beneficiaryId;
         private String currency;
         private BigDecimal amount;
+        private String transferId;
+        private String description;
     }
 }
