@@ -1,4 +1,4 @@
-package com.mentorshipwise.balanceservicestudy.dtos.response;
+package com.mentorshipwise.balanceservicestudy.dtos.response.user;
 
 import com.mentorshipwise.balanceservicestudy.models.User;
 
