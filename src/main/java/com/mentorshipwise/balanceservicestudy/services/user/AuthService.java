@@ -1,4 +1,4 @@
-package com.mentorshipwise.balanceservicestudy.services;
+package com.mentorshipwise.balanceservicestudy.services.user;
 
 import com.mentorshipwise.balanceservicestudy.dtos.response.user.AuthResponse;
 import com.mentorshipwise.balanceservicestudy.dtos.response.user.UserResponse;
@@ -21,7 +21,7 @@ public class AuthService {
     private final JwtUtil jwtUtil;
 
     public AuthResponse login(String email, String rawPassword) {
-        User user = userRepository.findByEmail(email).orElseThrow(UserExceptions.UserNotFoundException::new);
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new UserExceptions.UserNotFoundException(null));
 
         if (!passwordEncoder.matches(rawPassword, user.getPassword())) {
             throw new UserExceptions.InvalidCredentials();

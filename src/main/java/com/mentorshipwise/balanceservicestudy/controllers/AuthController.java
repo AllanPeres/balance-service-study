@@ -4,7 +4,7 @@ import com.mentorshipwise.balanceservicestudy.dtos.request.user.LoginRequest;
 import com.mentorshipwise.balanceservicestudy.dtos.response.ApiResponse;
 import com.mentorshipwise.balanceservicestudy.dtos.response.user.AuthResponse;
 import com.mentorshipwise.balanceservicestudy.dtos.response.user.UserResponse;
-import com.mentorshipwise.balanceservicestudy.services.AuthService;
+import com.mentorshipwise.balanceservicestudy.services.user.AuthService;
 import com.mentorshipwise.balanceservicestudy.utils.ResponseUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;

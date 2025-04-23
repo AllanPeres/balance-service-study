@@ -4,7 +4,7 @@ import com.mentorshipwise.balanceservicestudy.dtos.request.user.UpdateUserReques
 import com.mentorshipwise.balanceservicestudy.dtos.request.user.UserRequest;
 import com.mentorshipwise.balanceservicestudy.dtos.response.ApiResponse;
 import com.mentorshipwise.balanceservicestudy.models.User;
-import com.mentorshipwise.balanceservicestudy.services.UserService;
+import com.mentorshipwise.balanceservicestudy.services.user.UserService;
 import com.mentorshipwise.balanceservicestudy.utils.ResponseUtil;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -49,7 +49,7 @@ public class UserController {
         return ResponseEntity.ok(ResponseUtil.success("User:", user));
     }
 
-    @GetMapping("/{email}")
+    @GetMapping("?email={email}")
     public ResponseEntity<ApiResponse<Optional<User>>> getUserByEmail(
             @PathVariable String email) {
         Optional<User> user = Optional.ofNullable(service.findByEmail(email));
@@ -59,8 +59,7 @@ public class UserController {
     @PatchMapping("/{id}")
     public ResponseEntity<ApiResponse<Optional<User>>> updateUserById(
             @PathVariable String id,
-            @Valid @RequestBody UpdateUserRequest userDetails
-    ) {
+            @Valid @RequestBody UpdateUserRequest userDetails) {
         Optional<User> user = Optional.ofNullable(service.updateUserById(id, userDetails));
         return ResponseEntity.ok(ResponseUtil.success("User updated", user));
     }

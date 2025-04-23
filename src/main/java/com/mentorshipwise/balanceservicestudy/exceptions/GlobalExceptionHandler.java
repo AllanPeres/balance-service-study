@@ -42,6 +42,13 @@ public class GlobalExceptionHandler {
                 .body(ResponseUtil.error(errorMessage));
     }
 
+    // Handle empty balance
+    @ExceptionHandler(BalanceExceptions.BalanceIsEmpty.class)
+    public ResponseEntity<ApiResponse<Object>> handleBalanceIsEmpty(BalanceExceptions.BalanceIsEmpty ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(ResponseUtil.error("No balances found for this user"));
+    }
+
     // Handle balance conflicts when trying to create a dup
     @ExceptionHandler(BalanceExceptions.BalanceAlreadyExistsException.class)
     public ResponseEntity<ApiResponse<Void>> handleBalanceAlreadyExists(BalanceExceptions.BalanceAlreadyExistsException ex) {
@@ -59,8 +66,8 @@ public class GlobalExceptionHandler {
     }
 
     // Handle insufficient funds within user balance
-    @ExceptionHandler(BalanceExceptions.BalanceNotFoundException.class)
-    public ResponseEntity<ApiResponse<Void>> handleBalanceInsufficientFunds(BalanceExceptions.BalanceNotFoundException ex) {
+    @ExceptionHandler(BalanceExceptions.InsufficientFundsException.class)
+    public ResponseEntity<ApiResponse<Void>> handleInsufficientFunds(BalanceExceptions.InsufficientFundsException ex) {
         return ResponseEntity
                 .status(HttpStatus.UNPROCESSABLE_ENTITY)
                 .body(ResponseUtil.error(ex.getMessage()));
@@ -74,4 +81,11 @@ public class GlobalExceptionHandler {
                 .body(ResponseUtil.error(ex.getMessage()));
     }
 
+    // Handle not empty balance
+    @ExceptionHandler(BalanceExceptions.BalanceNotEmptyException.class)
+    public ResponseEntity<ApiResponse<Void>> handleNotEmptyBalance(BalanceExceptions.BalanceNotEmptyException ex) {
+        return ResponseEntity
+                .status(HttpStatus.UNPROCESSABLE_ENTITY)
+                .body(ResponseUtil.error(ex.getMessage()));
+    }
 }

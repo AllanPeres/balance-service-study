@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
+
 public class BalanceRequest {
 
     @Data
@@ -15,8 +16,9 @@ public class BalanceRequest {
     @Data
     public static class Add {
         private String userId;
-        private String currency;
+        private String balanceId;
         private BigDecimal amount;
+
     }
 
     @Data
@@ -30,6 +32,7 @@ public class BalanceRequest {
     public static class Send {
         private String userId;
         private String beneficiaryId;
+        private String beneficiaryBalanceId;
         private String currency;
         private BigDecimal amount;
         private String transferId;

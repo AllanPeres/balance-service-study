@@ -3,8 +3,8 @@ package com.mentorshipwise.balanceservicestudy.exceptions.user;
 public class UserExceptions {
 
     public static class UserNotFoundException extends RuntimeException {
-        public UserNotFoundException() {
-            super("User not found");
+        public UserNotFoundException(String entityName) {
+            super(entityName + " not found");
         }
     }
 

@@ -1,4 +1,4 @@
-package com.mentorshipwise.balanceservicestudy.services;
+package com.mentorshipwise.balanceservicestudy.services.user;
 
 import com.mentorshipwise.balanceservicestudy.dtos.request.user.UpdateUserRequest;
 import com.mentorshipwise.balanceservicestudy.dtos.request.user.UserRequest;
@@ -34,17 +34,17 @@ public class UserService {
 
     public User findById(String id) {
         return repository.findById(id)
-                .orElseThrow(UserExceptions.UserNotFoundException::new);
+                .orElseThrow(() -> new UserExceptions.UserNotFoundException("User"));
     }
 
     public User findByEmail(String email) {
         return repository.findByEmail(email)
-                .orElseThrow(UserExceptions.UserNotFoundException::new);
+                .orElseThrow(() -> new UserExceptions.UserNotFoundException("User"));
     }
 
     public User updateUserById(String id, UpdateUserRequest userDetails) {
         User user = repository.findById(id)
-                .orElseThrow(UserExceptions.UserNotFoundException::new);
+                .orElseThrow(() -> new UserExceptions.UserNotFoundException("User"));
 
         if (userDetails.getName() != null) {
             user.setName(userDetails.getName());
@@ -57,7 +57,7 @@ public class UserService {
 
     public void deleteById(String id) {
         repository.findByEmail(id)
-                .orElseThrow(UserExceptions.UserNotFoundException::new);
+                .orElseThrow(() -> new UserExceptions.UserNotFoundException("User"));
     }
 }
 
